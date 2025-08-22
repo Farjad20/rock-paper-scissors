@@ -3,12 +3,7 @@ console.log("Game page loaded");
       function gameComputerChoice(max){
         return Math.floor(Math.random() * max);
       }
-      
-
-      function getHumanChoice(){
-        return prompt("Enter your choice: 0 for Rock, 1 for Paper, 2 for Scissors");
-        
-      }
+    
 
       let humanScore = 0;
       let computerScore = 0;
