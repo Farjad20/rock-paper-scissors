@@ -12,39 +12,31 @@ console.log("Game page loaded");
 
       let humanScore = 0;
       let computerScore = 0;
-    function playGame() {
+    
     
       function playRound(humanChoice, computerChoice) {
+        let outcome = "";
         if (humanChoice === computerChoice) {
-            console.log("It's a tie!");
+            outcome = "It's a tie!";
         } else if (
             (humanChoice === 0 && computerChoice === 2) ||
             (humanChoice === 1 && computerChoice === 0) ||
             (humanChoice === 2 && computerChoice === 1)
         ) {
             humanScore++;
-            console.log("You win this round!");
+            outcome = "You win this round!";
         } else {
             computerScore++;
-            console.log("Computer wins this round!");
+            outcome = "Computer wins this round!";
         }
-        console.log(`Scores - Human: ${humanScore}, Computer: ${computerScore}`);
+        document.getElementById("result").textContent =
+        `Round: You chose ${humanChoice}, Computer chose ${computerChoice}. ${outcome}`;
+
+        document.getElementById("score").textContent =
+        `Scores - Human: ${humanScore}, Computer: ${computerScore}`;
+        
       }
       
-
-      for(let i=0;i<5;i++){
-       let humanChoice = parseInt(getHumanChoice());
-       let computerChoice = gameComputerChoice(3);
-      playRound(humanChoice, computerChoice);
-    }
-      if (humanScore > computerScore) {
-          console.log("You win the game!");
-      } else if (computerScore > humanScore) {
-          console.log("Computer wins the game!");
-      } else {
-          console.log("The game is a tie!");
-      }
-
-    }
-    
-    playGame();
+       document.getElementById("rock").addEventListener("click", () => playRound(0, gameComputerChoice(3)));
+       document.getElementById("paper").addEventListener("click", () => playRound(1, gameComputerChoice(3)));
+       document.getElementById("scissors").addEventListener("click", () => playRound(2, gameComputerChoice(3)));
